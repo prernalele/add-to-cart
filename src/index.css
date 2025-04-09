@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+/* red-hat-text-400 {
+    font-family: "Red Hat Text", "sans-serif";
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+} */
+
+@theme {
+    --font-display: "Red Hat Text", "sans-serif";
+}
