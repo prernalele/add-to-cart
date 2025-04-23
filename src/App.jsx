@@ -4,8 +4,9 @@ import CartDisplay from "./components/CartDisplay";
 import data from "../data.json";
 
 function App() {
-  const [addedToCart, setAddedToCart] = useState(0);
+  const [addedToCart, setAddedToCart] = useState([]);
   const [dessertsData, setDessertsData] = useState(data);
+
 
   return (
     <div className="flex justify-evenly">
