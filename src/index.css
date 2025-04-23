@@ -9,4 +9,5 @@
 
 @theme {
     --font-display: "Red Hat Text", "sans-serif";
+    --color-rose-50: hsl(20, 50%, 98%);
 }
