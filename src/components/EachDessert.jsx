@@ -17,7 +17,7 @@ const EachDessert = ({
     <div className="flex flex-col">
       <div className="flex flex-col justify-center mb-7">
         <img
-          src={`/assets/images/${desktop.split("/").pop()}`}
+          src={`/add-to-cart/assets/images/${desktop.split("/").pop()}`}
           className="size-50"
         />
         <AddToCartButton
