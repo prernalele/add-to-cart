@@ -1,9 +1,9 @@
 import React from "react";
-import EachDessert from "./EachDessert";
-import.meta.glob("../assets/images/*.jpg"); // This tells Vite to include these files
+import EachDessert from "./EachDessert.jsx";
+// import.meta.glob("../assets/images/*.jpg"); // This tells Vite to include these files
 // import localimage from "./assets/images/image-panna-cotta-desktop.jpg";
 
-const Dessert = ({ data }) => {
+const Dessert = ({ data, itemsInCart, setItemsInCart }) => {
   console.log("data", data);
   return (
     <div className="grid grid-cols-4">
@@ -22,10 +22,13 @@ const Dessert = ({ data }) => {
               <div>{price}</div>
             </div> */}
             <EachDessert
+              key={index}
               pictures={image}
               category={category}
               name={name}
               price={price}
+              itemsInCart={itemsInCart}
+              setItemsInCart={setItemsInCart}
             />
           </div>
         );
