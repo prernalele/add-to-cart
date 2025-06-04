@@ -4,12 +4,10 @@ import EachDessert from "./EachDessert.jsx";
 // import localimage from "./assets/images/image-panna-cotta-desktop.jpg";
 
 const Dessert = ({ data, itemsInCart, setItemsInCart }) => {
-  console.log("data", data);
   return (
     <div className="grid grid-cols-4">
       {data.map((eachDessert, index) => {
-        console.log("eachDessert", eachDessert);
-        const { category, name, price, image } = eachDessert;
+        const { category, name, price, image, key } = eachDessert;
         const { desktop, thumbnail } = image;
         return (
           <div key={index} className="m-4">
@@ -22,7 +20,8 @@ const Dessert = ({ data, itemsInCart, setItemsInCart }) => {
               <div>{price}</div>
             </div> */}
             <EachDessert
-              key={index}
+              selectedKey={key}
+              data={data}
               pictures={image}
               category={category}
               name={name}

@@ -2,7 +2,8 @@ import React from "react";
 import AddToCartButton from "./AddToCartButton.jsx";
 
 const EachDessert = ({
-  key,
+  selectedKey,
+  data,
   pictures,
   category,
   name,
@@ -11,8 +12,7 @@ const EachDessert = ({
   setItemsInCart,
 }) => {
   const { thumbnail, desktop, mobile, tablet } = pictures;
-  console.log("key", key);
-  console.log("pic", `/assets/images/${desktop.split("/").pop()}`);
+
   return (
     <div className="flex flex-col">
       <div className="flex flex-col justify-center mb-7">
@@ -21,6 +21,8 @@ const EachDessert = ({
           className="size-50"
         />
         <AddToCartButton
+          selectedKey={selectedKey}
+          data={data}
           itemsInCart={itemsInCart}
           setItemsInCart={setItemsInCart}
         />

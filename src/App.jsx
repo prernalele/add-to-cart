@@ -4,8 +4,11 @@ import CartDisplay from "./components/CartDisplay.jsx";
 import data from "../data.json";
 
 function App() {
-  const [addedToCart, setAddedToCart] = useState([]);
-  const [dessertsData, setDessertsData] = useState(data);
+  const updatedData = data.map((eachData, index) => {
+    return { ...eachData, ["key"]: index + 1 };
+  });
+  const [itemsInCart, setItemsInCart] = useState([]);
+  const [dessertsData, setDessertsData] = useState(updatedData);
 
   return (
     <div className="flex justify-evenly">
@@ -13,11 +16,11 @@ function App() {
         <h1 className="font-bold text-3xl">Desserts</h1>
         <Dessert
           data={dessertsData}
-          itemsInCart={addedToCart}
-          setItemsInCart={setAddedToCart}
+          itemsInCart={itemsInCart}
+          setItemsInCart={setItemsInCart}
         />
       </div>
-      <CartDisplay itemsInCart={addedToCart} setItemsInCart={setAddedToCart} />
+      <CartDisplay itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} />
     </div>
   );
 }
