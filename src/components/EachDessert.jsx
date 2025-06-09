@@ -10,6 +10,8 @@ const EachDessert = ({
   price,
   itemsInCart,
   setItemsInCart,
+  totalItemsInCart,
+  setTotalItemsInCart,
 }) => {
   const { thumbnail, desktop, mobile, tablet } = pictures;
 
@@ -25,6 +27,8 @@ const EachDessert = ({
           data={data}
           itemsInCart={itemsInCart}
           setItemsInCart={setItemsInCart}
+          totalItemsInCart={totalItemsInCart}
+          setTotalItemsInCart={setTotalItemsInCart}
         />
       </div>
       <div className="flex flex-col">

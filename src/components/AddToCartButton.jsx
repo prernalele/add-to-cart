@@ -9,9 +9,10 @@ const AddToCartButton = ({
   data,
   itemsInCart,
   setItemsInCart,
+  totalItemsInCart,
+  setTotalItemsInCart,
 }) => {
   const addToCartMethod = (selectedKey) => {
-    console.log("selected Key in addedToCartMethod", selectedKey);
     // setItemsInCart((prev) => {
     //   console.log("prev", prev);
     //   return prev.map((eachPrevValue, index) => {
@@ -26,9 +27,50 @@ const AddToCartButton = ({
     //   });
     // });
     setItemsInCart((prev) => {
-      console.log("previous", prev);
-      prev.push({ ...data[selectedKey], ["quantity"]: 1 });
+      console.log("selectedKey", selectedKey);
+      // console.log("key", key);
+      console.log("*prev*", prev);
+      // console.log("the object to be added", [
+      //   ...prev,
+      //   {
+      //     ...data.find((eachData) => eachData.key === selectedKey),
+      //     ["quantity"]: 1,
+      //   },
+      // ]);
+
+      const findDataToUpdate = data.find(
+        (eachData) => eachData.key === selectedKey
+      );
+
+      const isAlreadyInCart =
+        itemsInCart?.length > 0
+          ? itemsInCart?.find((item) => findDataToUpdate.key === item.key)
+          : undefined;
+      console.log("findDataToUpdate", findDataToUpdate);
+      const updatedObject = {
+        ...findDataToUpdate,
+        ["quantity"]: findDataToUpdate.quantity + 1,
+      };
+      console.log("isAlreadyInCart", isAlreadyInCart);
+      console.log("updatedObject", updatedObject);
+      const updatedPrev = [
+        prev.length > 0
+          ? prev?.find((prevItem) => {
+              if (prevItem.key === findDataToUpdate.key) {
+                return {
+                  ...findDataToUpdate,
+                  ["quantity"]: findDataToUpdate.quantity + 1,
+                };
+              }
+            })
+          : null,
+      ];
+
+      return isAlreadyInCart == undefined
+        ? [...prev, updatedObject]
+        : updatedPrev;
     });
+    setTotalItemsInCart(totalItemsInCart + 1);
   };
   return (
     <div className="-m-5 ml-4">

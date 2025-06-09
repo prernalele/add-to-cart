@@ -5,9 +5,10 @@ import data from "../data.json";
 
 function App() {
   const updatedData = data.map((eachData, index) => {
-    return { ...eachData, ["key"]: index + 1 };
+    return { ...eachData, ["key"]: index + 1, ["quantity"]: 1 };
   });
   const [itemsInCart, setItemsInCart] = useState([]);
+  const [totalItemsInCart, setTotalItemsInCart] = useState(0);
   const [dessertsData, setDessertsData] = useState(updatedData);
 
   return (
@@ -18,9 +19,16 @@ function App() {
           data={dessertsData}
           itemsInCart={itemsInCart}
           setItemsInCart={setItemsInCart}
+          totalItemsInCart={totalItemsInCart}
+          setTotalItemsInCart={setTotalItemsInCart}
         />
       </div>
-      <CartDisplay itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} />
+      <CartDisplay
+        itemsInCart={itemsInCart}
+        setItemsInCart={setItemsInCart}
+        totalItemsInCart={totalItemsInCart}
+        setTotalItemsInCart={setTotalItemsInCart}
+      />
     </div>
   );
 }
