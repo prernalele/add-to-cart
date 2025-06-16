@@ -13,72 +13,52 @@ const AddToCartButton = ({
   setTotalItemsInCart,
 }) => {
   const addToCartMethod = (selectedKey) => {
-    // setItemsInCart((prev) => {
-    //   console.log("prev", prev);
-    //   return prev.map((eachPrevValue, index) => {
-    //     if (prev.length > 0 && selectedKey === eachPrevValue.key) {
-    //       console.log("selectedKey if block");
-    //       return {
-    //         ...eachPrevValue,
-    //         [quantity]: eachPrevValue.quantity + 1,
-    //         [price]: eachPrevValue.price * quantity,
-    //       };
-    //     } else prev.push({ ...data[selectedKey], [quantity]: 1 });
-    //   });
-    // });
     setItemsInCart((prev) => {
-      console.log("selectedKey", selectedKey);
-      // console.log("key", key);
-      console.log("*prev*", prev);
-      // console.log("the object to be added", [
-      //   ...prev,
-      //   {
-      //     ...data.find((eachData) => eachData.key === selectedKey),
-      //     ["quantity"]: 1,
-      //   },
-      // ]);
+      /* 
+      1. Any given item can either be added or updated
+      2. IF the item's key already exist, update the quantity, return the previous 
+      3. IF the item's key is new, ADD to the prev, then return prev
+      */
 
-      const findDataToUpdate = data.find(
-        (eachData) => eachData.key === selectedKey
-      );
-
-      const isAlreadyInCart =
-        itemsInCart?.length > 0
-          ? itemsInCart?.find((item) => findDataToUpdate.key === item.key)
-          : undefined;
-      console.log("findDataToUpdate", findDataToUpdate);
-      const updatedObject = {
-        ...findDataToUpdate,
-        ["quantity"]: findDataToUpdate.quantity + 1,
-      };
-      console.log("isAlreadyInCart", isAlreadyInCart);
-      console.log("updatedObject", updatedObject);
-      const updatedPrev = [
-        prev.length > 0
-          ? prev?.find((prevItem) => {
-              if (prevItem.key === findDataToUpdate.key) {
-                return {
-                  ...findDataToUpdate,
-                  ["quantity"]: findDataToUpdate.quantity + 1,
-                };
-              }
-            })
-          : null,
-      ];
-
-      return isAlreadyInCart == undefined
-        ? [...prev, updatedObject]
-        : updatedPrev;
+      const itemToUpdateOrAdd = data.find((item) => item.key === selectedKey);
+      console.log("itemToUpdateOrAdd", itemToUpdateOrAdd);
+      console.log("previous", prev);
+      const isAlreadyExist =
+        prev?.length > 0
+          ? prev.filter((eachPrev) => eachPrev.key === itemToUpdateOrAdd.key)
+          : [];
+      console.log("isAlreadyExist", isAlreadyExist);
+      const updatedPrev = prev.map((item) => {
+        if (item.key === itemToUpdateOrAdd.key) {
+          return {
+            ...item,
+            ["quantity"]: item.quantity + 1,
+          };
+        } else item;
+      });
+      return isAlreadyExist.length
+        ? updatedPrev
+        : [
+            ...prev,
+            {
+              ...itemToUpdateOrAdd,
+              ["quantity"]: itemToUpdateOrAdd.quantity + 1,
+            },
+          ];
     });
     setTotalItemsInCart(totalItemsInCart + 1);
   };
   return (
-    <div className="-m-5 ml-4">
+    <div className="-m-5 ml-4 gap-0.5">
       <button className="bg-white text-sm font-semibold hover:bg-rose-200 hover:text-red p-2 rounded-2xl m-[-8] w-4/6 flex flex-row justify-baseline ml-4">
-        <img src={IconDecrement} />
-        <img src={IconAddToCart} />
+        <img src={IconDecrement} className="gap-0.5" />
+        <img src={IconAddToCart} className="gap-0.5" />
         Add to Cart
-        <img src={IconIncrement} onClick={() => addToCartMethod(selectedKey)} />
+        <img
+          src={IconIncrement}
+          onClick={() => addToCartMethod(selectedKey)}
+          className="gap-0.5"
+        />
       </button>
     </div>
   );

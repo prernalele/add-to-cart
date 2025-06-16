@@ -5,7 +5,7 @@ import data from "../data.json";
 
 function App() {
   const updatedData = data.map((eachData, index) => {
-    return { ...eachData, ["key"]: index + 1, ["quantity"]: 1 };
+    return { ...eachData, ["key"]: index + 1, ["quantity"]: 0 };
   });
   const [itemsInCart, setItemsInCart] = useState([]);
   const [totalItemsInCart, setTotalItemsInCart] = useState(0);
