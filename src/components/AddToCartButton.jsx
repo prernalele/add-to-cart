@@ -12,12 +12,16 @@ const AddToCartButton = ({
   totalItemsInCart,
   setTotalItemsInCart,
 }) => {
+
   const addToCartMethod = (selectedKey) => {
     setItemsInCart((prev) => {
       /* 
       1. Any given item can either be added or updated
       2. IF the item's key already exist, update the quantity, return the previous 
+        [1: 1, 2 : 2 ]
       3. IF the item's key is new, ADD to the prev, then return prev
+        [1:1, 2:2]
+        [1:1, 2:2, 3:1]
       */
 
       const itemToUpdateOrAdd = data.find((item) => item.key === selectedKey);
@@ -29,22 +33,23 @@ const AddToCartButton = ({
           : [];
       console.log("isAlreadyExist", isAlreadyExist);
       const updatedPrev = prev.map((item) => {
+        console.log("updating quantity in previous");
+        console.log("item.key", item.key);
+        console.log("itemToUpdateOrAdd.key", itemToUpdateOrAdd.key);
         if (item.key === itemToUpdateOrAdd.key) {
           return {
             ...item,
             ["quantity"]: item.quantity + 1,
           };
-        } else item;
+        } else return item;
       });
-      return isAlreadyExist.length
-        ? updatedPrev
-        : [
-            ...prev,
-            {
-              ...itemToUpdateOrAdd,
-              ["quantity"]: itemToUpdateOrAdd.quantity + 1,
-            },
-          ];
+      const newItemToAppend = {
+        ...itemToUpdateOrAdd,
+        ["quantity"]: itemToUpdateOrAdd.quantity + 1,
+      };
+      console.log("newItemToAppend", newItemToAppend);
+      console.log("updatedPrev", updatedPrev);
+      return isAlreadyExist.length ? updatedPrev : [...prev, newItemToAppend];
     });
     setTotalItemsInCart(totalItemsInCart + 1);
   };
