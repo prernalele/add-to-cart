@@ -76,14 +76,14 @@ const AddToCartButton = ({
         <img
           src={IconDecrement}
           onClick={() => takeAwayFromCart(selectedKey)}
-          className="p-1"
+          className="p-1 hover:cursor-pointer"
         />
         <img src={IconAddToCart} className="gap-0.5" />
         Add to Cart
         <img
           src={IconIncrement}
           onClick={() => addToCartMethod(selectedKey)}
-          className="p-1"
+          className="p-1 hover:cursor-pointer"
         />
       </button>
     </div>

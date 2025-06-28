@@ -10,8 +10,27 @@ const CartDisplay = ({
   console.log("itemsInCart in cartDisplay component", itemsInCart);
   console.log("total Items In Cart", totalItemsInCart);
   
-  const removeItem = (e, key) => {
-    console.log("key", key);
+  const takeAwayFromCart = (selectedKey) => {
+    console.log("selectedKey here", selectedKey);
+
+    setItemsInCart((prev) => {
+      /*
+      1. Find the key
+      2. Decrease one quantity
+      3. If the quantity is zero take the item out of the itemsInCart array
+      4. return the new prev
+      */
+      const updatedPrev = prev.map((item) => {
+        if (item.key === selectedKey) {
+          return {
+            ...item,
+            ["quantity"]: item.quantity - 1,
+          };
+        } else return item;
+      });
+      return updatedPrev.filter((item) => item.quantity !== 0);
+    });
+    setTotalItemsInCart(totalItemsInCart - 1);
   };
 
   return (
@@ -33,7 +52,12 @@ const CartDisplay = ({
                 <span>{`$ ${totalPrice}`}</span>
               </div>
             </div>
-            <div onClick={(e, key) => removeItem(e, key)}>x</div>
+            <div
+              onClick={() => takeAwayFromCart(key)}
+              className="hover:cursor-pointer"
+            >
+              x
+            </div>
           </div>
         );
       })}
