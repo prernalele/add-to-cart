@@ -1,4 +1,6 @@
 import React from "react";
+import { useMemo } from "react";
+import OrderTotal from "./OrderTotal";
 import emptyCartIllustration from "/assets/images/illustration-empty-cart.svg";
 
 const CartDisplay = ({
@@ -9,7 +11,13 @@ const CartDisplay = ({
 }) => {
   console.log("itemsInCart in cartDisplay component", itemsInCart);
   console.log("total Items In Cart", totalItemsInCart);
-  
+
+  const orderTotal = useMemo(() => {
+    return itemsInCart.reduce((total, item) => {
+      return total + item.quantity * item.price;
+    }, 0);
+  }, [itemsInCart]);
+
   const takeAwayFromCart = (selectedKey) => {
     console.log("selectedKey here", selectedKey);
 
@@ -39,28 +47,32 @@ const CartDisplay = ({
         Your Cart ({totalItemsInCart ? totalItemsInCart : 0})
       </div>
       {totalItemsInCart === 0 && <img src={emptyCartIllustration} />}
-      {itemsInCart?.map((item) => {
+      {itemsInCart?.map((item, index) => {
         const { name, quantity, price, key } = item;
         const totalPrice = quantity * price;
+
         return (
-          <div key={key} className="flex flex-row justify-between">
-            <div>
-              <div>{name}</div>
-              <div className="flex flex-row justify-between">
-                <span>{`${quantity}x`}</span>
-                <span>{`@${price}`}</span>
-                <span>{`$ ${totalPrice}`}</span>
+          <div key={index}>
+            <div key={key} className="flex flex-row justify-between">
+              <div>
+                <div>{name}</div>
+                <div className="flex flex-row justify-between">
+                  <span className="text-red">{`${quantity}x`}</span>
+                  <span>{`@${price}`}</span>
+                  <span>{`$ ${totalPrice}`}</span>
+                </div>
               </div>
-            </div>
-            <div
-              onClick={() => takeAwayFromCart(key)}
-              className="hover:cursor-pointer"
-            >
-              x
+              <div
+                onClick={() => takeAwayFromCart(key)}
+                className="hover:cursor-pointer"
+              >
+                x
+              </div>
             </div>
           </div>
         );
       })}
+      <OrderTotal orderTotal={orderTotal} />
     </div>
   );
 };
