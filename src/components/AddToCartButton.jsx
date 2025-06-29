@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import IconAddToCart from "/assets/images/icon-add-to-cart.svg";
 import IconIncrement from "/assets/images/icon-increment-quantity.svg";
 import IconDecrement from "/assets/images/icon-decrement-quantity.svg";
@@ -12,6 +12,13 @@ const AddToCartButton = ({
   totalItemsInCart,
   setTotalItemsInCart,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const currentItem = itemsInCart.find((item) => item.key === selectedKey);
+
+  const currentQuantity = currentItem?.quantity ? currentItem.quantity : 0;
+  console.log("currentItem", currentItem);
+  console.log("currentQuantity", currentQuantity);
 
   const addToCartMethod = (selectedKey) => {
     setItemsInCart((prev) => {
@@ -72,14 +79,24 @@ const AddToCartButton = ({
   };
   return (
     <div className="-m-5 ml-4 gap-0.5">
-      <button className="bg-white text-sm font-semibold hover:bg-rose-200 hover:text-red p-2 rounded-2xl m-[-8] w-4/6 flex flex-row justify-baseline ml-4">
+      <button
+        className="bg-white text-sm font-semibold hover:bg-rose-200 hover:text-red p-2 rounded-2xl m-[-8] w-4/6  flex flex-row justify-between ml-4"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <img
           src={IconDecrement}
           onClick={() => takeAwayFromCart(selectedKey)}
           className="p-1 hover:cursor-pointer"
         />
-        <img src={IconAddToCart} className="gap-0.5" />
-        Add to Cart
+        {isHovered && currentQuantity > 0 ? (
+          `${currentQuantity}`
+        ) : (
+          <>
+            <img src={IconAddToCart} className="gap-0.5" />
+            Add to Cart
+          </>
+        )}
         <img
           src={IconIncrement}
           onClick={() => addToCartMethod(selectedKey)}

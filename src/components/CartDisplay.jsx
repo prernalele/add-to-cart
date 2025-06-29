@@ -46,38 +46,44 @@ const CartDisplay = ({
   };
 
   return (
-    <div className="bg-white w-[20%] mt-2 px-2 rounded-md">
-      <div className="mt-10 max-w-xs text-red font-medium">
+    <div className="bg-white w-[23%] max-h-screen px-4 py-4 rounded-md flex flex-col m-2 ">
+      <div className="max-w-xs text-red font-medium">
         Your Cart ({totalItemsInCart ? totalItemsInCart : 0})
       </div>
-      {totalItemsInCart === 0 && <img src={emptyCartIllustration} />}
-      {itemsInCart?.map((item, index) => {
-        const { name, quantity, price, key } = item;
-        const totalPrice = quantity * price;
+      {totalItemsInCart === 0 && (
+        <img src={emptyCartIllustration} className="m-auto p-auto" />
+      )}
 
-        return (
-          <div key={index}>
-            <div key={key} className="flex flex-row justify-between">
-              <div>
-                <div>{name}</div>
-                <div className="flex flex-row justify-between">
-                  <span className="text-red">{`${quantity}x`}</span>
-                  <span>{`@${price}`}</span>
-                  <span>{`$ ${totalPrice}`}</span>
+      <div className="flex flex-col justify-center">
+        {itemsInCart.length > 0 &&
+          itemsInCart?.map((item, index) => {
+            const { name, quantity, price, key } = item;
+            const totalPrice = quantity * price;
+
+            return (
+              <div key={index}>
+                <div key={key} className="flex flex-row justify-between">
+                  <div>
+                    <div>{name}</div>
+                    <div className="flex flex-row justify-between">
+                      <span className="text-red">{`${quantity}x`}</span>
+                      <span>{`@${price}`}</span>
+                      <span>{`$ ${totalPrice}`}</span>
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => takeAwayFromCart(key)}
+                    className="hover:cursor-pointer"
+                  >
+                    x
+                  </div>
                 </div>
               </div>
-              <div
-                onClick={() => takeAwayFromCart(key)}
-                className="hover:cursor-pointer"
-              >
-                x
-              </div>
-            </div>
-          </div>
-        );
-      })}
-      <br />
-      {itemsInCart.length > 0 && <OrderTotal orderTotal={orderTotal} />}
+            );
+          })}
+        <br />
+        {itemsInCart.length > 0 && <OrderTotal orderTotal={orderTotal} />}
+      </div>
     </div>
   );
 };
