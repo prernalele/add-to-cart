@@ -14,7 +14,11 @@ const CartDisplay = ({
 
   const orderTotal = useMemo(() => {
     return itemsInCart.reduce((total, item) => {
-      return total + item.quantity * item.price;
+      console.log("item", item);
+      const currentTotal = item.quantity * item.price;
+      console.log("current total", currentTotal);
+      console.log("total", total);
+      return total + currentTotal;
     }, 0);
   }, [itemsInCart]);
 
@@ -38,7 +42,7 @@ const CartDisplay = ({
       });
       return updatedPrev.filter((item) => item.quantity !== 0);
     });
-    setTotalItemsInCart(totalItemsInCart - 1);
+    setTotalItemsInCart((prev) => prev - 1);
   };
 
   return (
@@ -72,7 +76,8 @@ const CartDisplay = ({
           </div>
         );
       })}
-      <OrderTotal orderTotal={orderTotal} />
+      <br />
+      {itemsInCart.length > 0 && <OrderTotal orderTotal={orderTotal} />}
     </div>
   );
 };
