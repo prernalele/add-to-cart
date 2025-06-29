@@ -58,39 +58,45 @@ const CartDisplay = ({
           </div>
         </div>
       )}
+      {itemsInCart.length > 0 && (
+        <div className="flex flex-col">
+          <div className="flex flex-col justify-center">
+            {itemsInCart?.map((item, index) => {
+              const { name, quantity, price, key } = item;
+              const totalPrice = quantity * price;
 
-      <div className="flex flex-col justify-center">
-        {itemsInCart.length > 0 &&
-          itemsInCart?.map((item, index) => {
-            const { name, quantity, price, key } = item;
-            const totalPrice = quantity * price;
-
-            return (
-              <div key={key} className="m-2">
-                <div key={key} className="flex flex-row justify-between">
-                  <div>
-                    <div>{name}</div>
-                    <div className="flex flex-row justify-between">
-                      <span className="text-red">{`${quantity}x`}</span>
-                      <span>{`@${price}`}</span>
-                      <span>{`$ ${totalPrice}`}</span>
+              return (
+                <div key={key} className="m-2">
+                  <div
+                    key={key}
+                    className="flex flex-row justify-between  border-b-amber-900 border-b-1 py-1"
+                  >
+                    <div>
+                      <div className="text-rose-500 font-semibold">{name}</div>
+                      <div className="flex flex-row justify-between">
+                        <span className="text-red">{`${quantity}x`}</span>
+                        <span className="text-rose-500">{`@${price}`}</span>
+                        <span className="text-rose-500">{`$ ${totalPrice}`}</span>
+                      </div>
+                    </div>
+                    <div
+                      onClick={() => takeAwayFromCart(key)}
+                      className="hover:cursor-pointer"
+                    >
+                      x
                     </div>
                   </div>
-                  <div
-                    onClick={() => takeAwayFromCart(key)}
-                    className="hover:cursor-pointer"
-                  >
-                    x
-                  </div>
                 </div>
-              </div>
-            );
-          })}
-        <br />
-        {itemsInCart.length > 0 && (
-          <OrderTotal orderTotal={orderTotal} className="border-t-4" />
-        )}
-      </div>
+              );
+            })}
+            <br />
+            {itemsInCart.length > 0 && <OrderTotal orderTotal={orderTotal} />}
+          </div>
+          <button className="bg-rose-200 rounded-3xl p-2 m-4 text-lg font-semibold">
+            Confirm Order
+          </button>
+        </div>
+      )}
     </div>
   );
 };
