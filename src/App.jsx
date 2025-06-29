@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Dessert from "./components/Dessert.jsx";
 import CartDisplay from "./components/CartDisplay.jsx";
+import OrderConfirmationForm from "./components/orderConfirmationForm.jsx";
 import data from "../data.json";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [itemsInCart, setItemsInCart] = useState([]);
   const [totalItemsInCart, setTotalItemsInCart] = useState(0);
   const [dessertsData, setDessertsData] = useState(updatedData);
+  const [showOrderConfirmed, setShowOrderConfirmed] = useState(false);
 
   return (
     <div className="flex justify-evenly">
@@ -28,7 +30,11 @@ function App() {
         setItemsInCart={setItemsInCart}
         totalItemsInCart={totalItemsInCart}
         setTotalItemsInCart={setTotalItemsInCart}
+        setShowOrderConfirmed={setShowOrderConfirmed}
       />
+      {showOrderConfirmed && (
+        <OrderConfirmationForm setShowOrderConfirmed={setShowOrderConfirmed} />
+      )}
     </div>
   );
 }

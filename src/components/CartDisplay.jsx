@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useMemo } from "react";
 import OrderTotal from "./OrderTotal";
 import emptyCartIllustration from "/assets/images/illustration-empty-cart.svg";
@@ -8,6 +9,7 @@ const CartDisplay = ({
   setItemsInCart,
   totalItemsInCart,
   setTotalItemsInCart,
+  setShowOrderConfirmed,
 }) => {
   console.log("itemsInCart in cartDisplay component", itemsInCart);
   console.log("total Items In Cart", totalItemsInCart);
@@ -92,7 +94,10 @@ const CartDisplay = ({
             <br />
             {itemsInCart.length > 0 && <OrderTotal orderTotal={orderTotal} />}
           </div>
-          <button className="bg-rose-200 rounded-3xl p-2 m-4 text-lg font-semibold">
+          <button
+            className="bg-rose-200 rounded-3xl p-2 m-4 text-lg font-semibold"
+            onClick={() => setShowOrderConfirmed(true)}
+          >
             Confirm Order
           </button>
         </div>
