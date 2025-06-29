@@ -46,12 +46,17 @@ const CartDisplay = ({
   };
 
   return (
-    <div className="bg-white w-[23%] max-h-screen px-4 py-4 rounded-md flex flex-col m-2 ">
-      <div className="max-w-xs text-red font-medium">
+    <div className="bg-white w-[23%] max-h-screen min-h-1 px-4 py-4 rounded-md flex flex-col mx-2 mt-10">
+      <div className="max-w-xs text-red font-medium my-2">
         Your Cart ({totalItemsInCart ? totalItemsInCart : 0})
       </div>
       {totalItemsInCart === 0 && (
-        <img src={emptyCartIllustration} className="m-auto p-auto" />
+        <div className="flex flex-col justify-around">
+          <img src={emptyCartIllustration} className="m-auto p-auto" />
+          <div className="text-rose-500">
+            Your added items will appear here.
+          </div>
+        </div>
       )}
 
       <div className="flex flex-col justify-center">
@@ -61,7 +66,7 @@ const CartDisplay = ({
             const totalPrice = quantity * price;
 
             return (
-              <div key={index}>
+              <div key={key} className="m-2">
                 <div key={key} className="flex flex-row justify-between">
                   <div>
                     <div>{name}</div>
@@ -82,7 +87,9 @@ const CartDisplay = ({
             );
           })}
         <br />
-        {itemsInCart.length > 0 && <OrderTotal orderTotal={orderTotal} />}
+        {itemsInCart.length > 0 && (
+          <OrderTotal orderTotal={orderTotal} className="border-t-4" />
+        )}
       </div>
     </div>
   );
