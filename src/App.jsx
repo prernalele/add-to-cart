@@ -14,24 +14,26 @@ function App() {
   const [showOrderConfirmed, setShowOrderConfirmed] = useState(false);
 
   return (
-    <div className="flex justify-evenly">
-      <div className="flex flex-col pt-10 font-display">
-        <h1 className="font-bold text-3xl">Desserts</h1>
-        <Dessert
-          data={dessertsData}
+    <div className="relative min-h-screen">
+      <div className="flex justify-evenly ">
+        <div className="flex flex-col pt-10 font-display">
+          <h1 className="font-bold text-3xl">Desserts</h1>
+          <Dessert
+            data={dessertsData}
+            itemsInCart={itemsInCart}
+            setItemsInCart={setItemsInCart}
+            totalItemsInCart={totalItemsInCart}
+            setTotalItemsInCart={setTotalItemsInCart}
+          />
+        </div>
+        <CartDisplay
           itemsInCart={itemsInCart}
           setItemsInCart={setItemsInCart}
           totalItemsInCart={totalItemsInCart}
           setTotalItemsInCart={setTotalItemsInCart}
+          setShowOrderConfirmed={setShowOrderConfirmed}
         />
       </div>
-      <CartDisplay
-        itemsInCart={itemsInCart}
-        setItemsInCart={setItemsInCart}
-        totalItemsInCart={totalItemsInCart}
-        setTotalItemsInCart={setTotalItemsInCart}
-        setShowOrderConfirmed={setShowOrderConfirmed}
-      />
       {showOrderConfirmed && (
         <OrderConfirmationForm setShowOrderConfirmed={setShowOrderConfirmed} />
       )}
