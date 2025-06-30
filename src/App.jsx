@@ -35,7 +35,10 @@ function App() {
         />
       </div>
       {showOrderConfirmed && (
-        <OrderConfirmationForm setShowOrderConfirmed={setShowOrderConfirmed} />
+        <OrderConfirmationForm
+          setShowOrderConfirmed={setShowOrderConfirmed}
+          itemsInCart={itemsInCart}
+        />
       )}
     </div>
   );
