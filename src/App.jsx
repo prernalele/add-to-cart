@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Dessert from "./components/Dessert.jsx";
 import CartDisplay from "./components/CartDisplay.jsx";
-import OrderConfirmationForm from "./components/orderConfirmationForm.jsx";
+import OrderConfirmationForm from "./components/OrderConfirmationForm.jsx";
 import data from "../data.json";
 
 function App() {
