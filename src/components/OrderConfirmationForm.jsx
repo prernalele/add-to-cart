@@ -1,6 +1,6 @@
 import React from "react";
 import iconOrderConfirmed from "/assets/images/icon-order-confirmed.svg";
-import ListOfConfirmedItems from "./listOfConfirmedItems";
+import ListOfConfirmedItems from "./ListOfConfirmedItems";
 
 const OrderConfirmationForm = ({ itemsInCart, setShowOrderConfirmed }) => {
   return (
