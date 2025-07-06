@@ -4,8 +4,8 @@ import ListOfConfirmedItems from "./ListOfConfirmedItems";
 
 const OrderConfirmationForm = ({ itemsInCart, setShowOrderConfirmed }) => {
   return (
-    <div className=" fixed inset-0 z-50 bg-black/50 flex flex-col items-center justify-center  ">
-      <div className="bg-rose-50 justify-around rounded-2xl  min-h-fit">
+    <div className=" fixed inset-0 z-50 bg-black/50 flex flex-col items-center justify-center   ">
+      <div className="bg-rose-50 justify-around rounded-2xl  min-h-fit  ">
         <img src={iconOrderConfirmed} className="size-10 ml-2 mt-2" />
         <h2 className="font-bold text-2xl text-black ml-2 mt-2">
           Order Confirmed

@@ -3,7 +3,7 @@ import React from "react";
 const ListOfConfirmedItems = ({ itemsInCart }) => {
   console.log("items in cart", itemsInCart);
   return (
-    <div>
+    <div className="max-h-96 overflow-y-auto">
       {itemsInCart.map((item, index) => {
         const { image, name, price, quantity } = item;
         console.log("item", item);
