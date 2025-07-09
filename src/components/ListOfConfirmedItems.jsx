@@ -17,8 +17,8 @@ const ListOfConfirmedItems = ({ itemsInCart }) => {
             <div className="flex flex-col justify-start flex-1 min-w-0 items-start">
               <div className="m-3 text-rose-900 font-semibold ">{name}</div>
               <div className="flex flex-row m-2">
-                <span className="m-2">{`${quantity}x`}</span>
-                <span className="m-2 text-red">{`@$${price}`}</span>
+                <span className="m-2 text-red">{`${quantity}x`}</span>
+                <span className="m-2 text-rose-500">{`@$${price}`}</span>
               </div>
             </div>
             <div className="flex flex-row-reverse w-20 ">{`$${
