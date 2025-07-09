@@ -20,7 +20,7 @@ const EachDessert = ({
       <div className="flex flex-col justify-center mb-7">
         <img
           src={`/add-to-cart/assets/images/${desktop.split("/").pop()}`}
-          className="size-50"
+          className="size-50 hover:border-2 border-red"
         />
         <AddToCartButton
           selectedKey={selectedKey}
@@ -32,9 +32,9 @@ const EachDessert = ({
         />
       </div>
       <div className="flex flex-col">
-        <div>{category}</div>
-        <div>{name}</div>
-        <div>{`$ ${price}`}</div>
+        <div className="text-rose-900">{category}</div>
+        <div className="text-rose-900 font-medium">{name}</div>
+        <div className="text-red font-semibold">{`$ ${price}`}</div>
       </div>
     </div>
   );

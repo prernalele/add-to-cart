@@ -76,9 +76,9 @@ const CartDisplay = ({
                     <div>
                       <div className="text-rose-500 font-semibold">{name}</div>
                       <div className="flex flex-row justify-between">
-                        <span className="text-red">{`${quantity}x`}</span>
-                        <span className="text-rose-500">{`@${price}`}</span>
-                        <span className="text-rose-500">{`$ ${totalPrice}`}</span>
+                        <span className="text-red font-semibold">{`${quantity}x`}</span>
+                        <span className="text-rose-500">{`@$${price}`}</span>
+                        <span className="text-rose-500">{`$${totalPrice}`}</span>
                       </div>
                     </div>
                     <div

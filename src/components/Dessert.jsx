@@ -11,7 +11,7 @@ const Dessert = ({
   setTotalItemsInCart,
 }) => {
   return (
-    <div className="grid grid-cols-4">
+    <div className="grid lg:grid-cols-4 grid-cols-1">
       {data.map((eachDessert, index) => {
         const { category, name, price, image, key } = eachDessert;
         const { desktop, thumbnail } = image;

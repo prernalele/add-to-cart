@@ -9,21 +9,21 @@ const ListOfConfirmedItems = ({ itemsInCart }) => {
         console.log("item", item);
         const { thumbnail } = image;
         return (
-          <div className="flex flex-row justify-around p-2 m-2 grow-2 bg-rose-100">
+          <div className="flex flex-row justify-around p-2 m-2 grow-2 bg-rose-100 rounded-md items-center ">
             <img
               src={thumbnail}
-              className="size-15 rounded-md flex-shrink-0 "
+              className="size-20 rounded-md flex-shrink-0 "
             />
-            <div className="flex flex-col justify-between flex-1 min-w-0">
-              <div>{name}</div>
-              <div className="flex flex-row justify-items-center m-2">
+            <div className="flex flex-col justify-between flex-1 min-w-0 items-center">
+              <div className="m-2 text-rose-900 font-semibold ">{name}</div>
+              <div className="flex flex-row m-2">
                 <span className="m-2">{`${quantity}x`}</span>
-                <span className="m-2">{`${price}`}</span>
+                <span className="m-2 text-red">{`${price}`}</span>
               </div>
             </div>
-            <div className="flex justify-center w-20 align-middle">
-              {`$${quantity * price}`}
-            </div>
+            <div className="flex flex-row-reverse w-20 ">{`$${
+              quantity * price
+            }`}</div>
           </div>
         );
       })}

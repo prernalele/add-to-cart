@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="relative min-h-screen">
-      <div className="flex justify-evenly ">
+      <div className="flex justify-evenly md:flex-row flex-col">
         <div className="flex flex-col pt-10 font-display">
           <h1 className="font-bold text-3xl">Desserts</h1>
           <Dessert
