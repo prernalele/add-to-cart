@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListOfConfirmedItems = ({ itemsInCart }) => {
+const ListOfConfirmedItems = ({ itemsInCart, orderTotal }) => {
   console.log("items in cart", itemsInCart);
   return (
     <div className="max-h-96 overflow-y-auto">
@@ -27,6 +27,10 @@ const ListOfConfirmedItems = ({ itemsInCart }) => {
           </div>
         );
       })}
+      <div className="flex justify-between bg-rose-100 m-2  p-4 ">
+        <div className="text-lg">Order Total</div>
+        <div className="text-xl font-semibold">{`$${orderTotal}`}</div>
+      </div>
     </div>
   );
 };

@@ -80,7 +80,7 @@ const AddToCartButton = ({
   return (
     <div className="-m-5 ml-4 gap-0.5">
       <button
-        className="bg-white text-sm font-semibold hover:bg-rose-200 hover:text-red p-2 rounded-2xl m-[-8] w-4/6  flex flex-row justify-between ml-4 shrink-0"
+        className="bg-white text-sm font-semibold hover:bg-rose-200 hover:text-red p-2 rounded-2xl m-[-8] w-4/6  flex flex-row justify-between ml-4 flex-2"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
