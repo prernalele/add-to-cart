@@ -78,9 +78,9 @@ const AddToCartButton = ({
     setTotalItemsInCart(totalItemsInCart - 1);
   };
   return (
-    <div className="-m-5 ml-4 gap-0.5">
+    <div className="-m-5 place-items-center w-[3] gap-0.5">
       <button
-        className="bg-white text-sm font-semibold hover:bg-rose-200 hover:text-red p-2 rounded-2xl m-[-8] w-4/6  flex flex-row justify-between ml-4 flex-2"
+        className="bg-white text-sm font-semibold hover:bg-rose-200 hover:text-red p-4 rounded-4xl    flex flex-row justify-between  flex-none w-[70%]"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -89,14 +89,20 @@ const AddToCartButton = ({
           onClick={() => takeAwayFromCart(selectedKey)}
           className="p-1 hover:cursor-pointer"
         />
-        {isHovered && currentQuantity > 0 ? (
-          `${currentQuantity}`
-        ) : (
-          <>
-            <img src={IconAddToCart} className="gap-0.5" />
-            Add to Cart
-          </>
-        )}
+        {/* {isHovered && currentQuantity > 0 ? (
+          <div className="w-[100%]">{`${currentQuantity}`}</div>
+        ) : ( */}
+        <div className="flex flex-row items-center justify-between flex-none">
+          {isHovered && currentQuantity > 0 ? (
+            <div className="w-[100%]">{`${currentQuantity}`}</div>
+          ) : (
+            <>
+              <img src={IconAddToCart} className="" />
+              <span className="items-center">Add to Cart</span>
+            </>
+          )}
+        </div>
+
         <img
           src={IconIncrement}
           onClick={() => addToCartMethod(selectedKey)}
