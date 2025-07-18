@@ -5,10 +5,8 @@ import ListOfConfirmedItems from "./ListOfConfirmedItems";
 const OrderConfirmationForm = ({ itemsInCart, setShowOrderConfirmed }) => {
   const orderTotal = useMemo(() => {
     return itemsInCart.reduce((total, item) => {
-      console.log("item", item);
       const currentTotal = item.quantity * item.price;
-      console.log("current total", currentTotal);
-      console.log("total", total);
+
       return total + currentTotal;
     }, 0);
   }, [itemsInCart]);

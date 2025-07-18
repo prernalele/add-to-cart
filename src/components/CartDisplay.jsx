@@ -48,7 +48,7 @@ const CartDisplay = ({
   };
 
   return (
-    <div className="bg-white w-[30%] max-h-screen min-h-1 px-4 py-4 rounded-md flex flex-col mx-2 mt-10">
+    <div className="bg-white md:w-[22%] w:[70%] max-h-screen min-h-1 px-4 py-4 rounded-md flex flex-col mx-2 mt-10">
       <div className="max-w-xs text-red font-medium my-2">
         Your Cart ({totalItemsInCart ? totalItemsInCart : 0})
       </div>
@@ -61,7 +61,7 @@ const CartDisplay = ({
         </div>
       )}
       {itemsInCart.length > 0 && (
-        <div className="flex flex-col">
+        <div className="flex flex-col w-[80%] m-auto p-auto grow-[25vw] ">
           <div className="flex flex-col justify-center">
             {itemsInCart?.map((item, index) => {
               const { name, quantity, price, key } = item;
