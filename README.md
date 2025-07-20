@@ -17,7 +17,7 @@ This is a project build to be submitted to "Frontend mentor". The design files a
 * Responsive design adhering to the typography and color scheme as much as possible
 
 ## Project Live link 
-TBD
+https://prernalele.github.io/add-to-cart/ 
 
 ## How to install it locall
 * Download all the files
