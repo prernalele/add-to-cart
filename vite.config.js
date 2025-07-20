@@ -9,6 +9,10 @@ export default defineConfig({
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
+  },
   esbuild: {
     loader: "jsx",
     include: /src\/.*\.[jt]sx?$/,
