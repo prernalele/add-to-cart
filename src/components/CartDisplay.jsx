@@ -11,22 +11,14 @@ const CartDisplay = ({
   setTotalItemsInCart,
   setShowOrderConfirmed,
 }) => {
-  console.log("itemsInCart in cartDisplay component", itemsInCart);
-  console.log("total Items In Cart", totalItemsInCart);
-
   const orderTotal = useMemo(() => {
     return itemsInCart.reduce((total, item) => {
-      console.log("item", item);
       const currentTotal = item.quantity * item.price;
-      console.log("current total", currentTotal);
-      console.log("total", total);
       return total + currentTotal;
     }, 0);
   }, [itemsInCart]);
 
   const takeAwayFromCart = (selectedKey) => {
-    console.log("selectedKey here", selectedKey);
-
     setItemsInCart((prev) => {
       /*
       1. Find the key

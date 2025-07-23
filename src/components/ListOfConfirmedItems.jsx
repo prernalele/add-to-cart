@@ -1,12 +1,10 @@
 import React from "react";
 
 const ListOfConfirmedItems = ({ itemsInCart, orderTotal }) => {
-  console.log("items in cart", itemsInCart);
   return (
     <div className="max-h-96 overflow-y-auto">
       {itemsInCart.map((item, index) => {
         const { image, name, price, quantity } = item;
-        console.log("item", item);
         const { thumbnail } = image;
         return (
           <div className="flex flex-row justify-around p-2 m-2 grow-2 bg-rose-100 rounded-md items-center ">

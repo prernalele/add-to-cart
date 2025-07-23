@@ -17,8 +17,6 @@ const AddToCartButton = ({
   const currentItem = itemsInCart.find((item) => item.key === selectedKey);
 
   const currentQuantity = currentItem?.quantity ? currentItem.quantity : 0;
-  console.log("currentItem", currentItem);
-  console.log("currentQuantity", currentQuantity);
 
   const addToCartMethod = (selectedKey) => {
     setItemsInCart((prev) => {
@@ -32,13 +30,12 @@ const AddToCartButton = ({
       */
 
       const itemToUpdateOrAdd = data.find((item) => item.key === selectedKey);
-      console.log("itemToUpdateOrAdd", itemToUpdateOrAdd);
-      console.log("previous", prev);
+
       const isAlreadyExist =
         prev?.length > 0
           ? prev.filter((eachPrev) => eachPrev.key === itemToUpdateOrAdd.key)
           : [];
-      console.log("isAlreadyExist", isAlreadyExist);
+
       const updatedPrev = prev.map((item) => {
         if (item.key === itemToUpdateOrAdd.key) {
           return {
@@ -51,8 +48,6 @@ const AddToCartButton = ({
         ...itemToUpdateOrAdd,
         ["quantity"]: itemToUpdateOrAdd.quantity + 1,
       };
-      console.log("newItemToAppend", newItemToAppend);
-      console.log("updatedPrev", updatedPrev);
       return isAlreadyExist.length ? updatedPrev : [...prev, newItemToAppend];
     });
     setTotalItemsInCart(totalItemsInCart + 1);
