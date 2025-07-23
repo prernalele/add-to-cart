@@ -10,7 +10,7 @@ function App() {
   });
   const [itemsInCart, setItemsInCart] = useState([]);
   const [totalItemsInCart, setTotalItemsInCart] = useState(0);
-  const [dessertsData, setDessertsData] = useState(updatedData);
+  // const [dessertsData, setDessertsData] = useState(updatedData);
   const [showOrderConfirmed, setShowOrderConfirmed] = useState(false);
 
   return (
@@ -19,7 +19,7 @@ function App() {
         <div className="flex flex-col pt-5 font-display">
           <h1 className="font-bold text-3xl  p-4 ">Desserts</h1>
           <Dessert
-            data={dessertsData}
+            data={updatedData}
             itemsInCart={itemsInCart}
             setItemsInCart={setItemsInCart}
             totalItemsInCart={totalItemsInCart}
