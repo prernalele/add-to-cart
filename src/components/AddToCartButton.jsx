@@ -95,7 +95,11 @@ const AddToCartButton = ({
             <div className="w-[100%]">{`${currentQuantity}`}</div>
           ) : (
             <>
-              <img src={IconAddToCart} alt="Add to cart" className="w-4 h-4" />
+              <img
+                src={IconAddToCart}
+                alt="icon showing add to cart"
+                className="w-4 h-4"
+              />
               <span className="items-center">Add to Cart</span>
             </>
           )}
