@@ -13,7 +13,11 @@ const OrderConfirmationForm = ({ itemsInCart, setShowOrderConfirmed }) => {
   return (
     <div className=" fixed inset-0 z-50 bg-black/50 flex flex-col items-center justify-center  ">
       <div className="bg-rose-50 justify-around rounded-2xl  min-h-fit p-3 ">
-        <img src={iconOrderConfirmed} className="size-10 ml-2 mt-2" />
+        <img
+          src={iconOrderConfirmed}
+          className="size-10 ml-2 mt-2"
+          alt="icon of order confirmation "
+        />
         <h2 className="font-bold text-2xl text-black ml-2 mt-2">
           Order Confirmed
         </h2>

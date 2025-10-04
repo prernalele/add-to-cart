@@ -11,6 +11,7 @@ const ListOfConfirmedItems = ({ itemsInCart, orderTotal }) => {
             <img
               src={thumbnail}
               className="size-20 rounded-md flex-shrink-0 "
+              alt={`image of ${name} in order confirmation `}
             />
             <div className="flex flex-col justify-start flex-1 min-w-0 items-start">
               <div className="m-3 text-rose-900 font-semibold ">{name}</div>

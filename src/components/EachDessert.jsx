@@ -21,6 +21,7 @@ const EachDessert = ({
         <img
           src={`/add-to-cart/assets/images/${desktop.split("/").pop()}`}
           className="size-50 hover:border-2 border-red"
+          alt={`image of ${name}`}
         />
         <AddToCartButton
           selectedKey={selectedKey}

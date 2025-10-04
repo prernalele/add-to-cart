@@ -46,7 +46,11 @@ const CartDisplay = ({
       </div>
       {totalItemsInCart === 0 && (
         <div className="flex flex-col justify-around">
-          <img src={emptyCartIllustration} className="m-auto p-auto" />
+          <img
+            src={emptyCartIllustration}
+            alt="illistration of an empty cart"
+            className="m-auto p-auto"
+          />
           <div className="text-rose-500">
             Your added items will appear here.
           </div>
