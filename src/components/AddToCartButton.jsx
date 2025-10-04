@@ -79,20 +79,19 @@ const AddToCartButton = ({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img
-          src={IconDecrement}
-          alt="Decrease quantity"
-          onClick={(e) => {
-            e.stopPropagation();
-            takeAwayFromCart(selectedKey);
-          }}
-          className="w-4 h-4 p-1 hover:cursor-pointer"
-        />
-        {/* {isHovered && currentQuantity > 0 ? (
-          <div className="w-[100%]">{`${currentQuantity}`}</div>
-        ) : ( */}
+        <div className="border-2 border-transparent hover:border-red-500 hover:rounded-full  ">
+          <img
+            src={IconDecrement}
+            alt="Decrease quantity"
+            onClick={(e) => {
+              e.stopPropagation();
+              takeAwayFromCart(selectedKey);
+            }}
+            className="size-5 p-1 hover:cursor-pointer"
+          />
+        </div>
         <div className="flex flex-row items-center justify-between flex-none">
-          {isHovered && currentQuantity > 0 ? (
+          {isHovered && currentQuantity >= 0 ? (
             <div className="w-[100%]">{`${currentQuantity}`}</div>
           ) : (
             <>
@@ -101,16 +100,17 @@ const AddToCartButton = ({
             </>
           )}
         </div>
-
-        <img
-          src={IconIncrement}
-          alt="Increase quantity"
-          onClick={(e) => {
-            e.stopPropagation();
-            addToCartMethod(selectedKey);
-          }}
-          className="w-4 h-4 p-1 hover:cursor-pointer"
-        />
+        <div className="border-2 border-transparent hover:border-red-500 hover:rounded-full">
+          <img
+            src={IconIncrement}
+            alt="Increase quantity"
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCartMethod(selectedKey);
+            }}
+            className="size-5 p-1 hover:cursor-pointer hover:fill-indigo-500"
+          />
+        </div>
       </button>
     </div>
   );
