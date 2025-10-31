@@ -17,7 +17,7 @@ function App() {
     <div className="relative min-h-screen">
       <div className="flex md:justify-evenly  md:flex-row flex-col place-items-center md:place-items-start">
         <div className="flex flex-col pt-5 font-display">
-          <h1 className="font-bold text-3xl  p-4 ">Desserts</h1>
+          <h1 className="font-bold font-primary text-3xl  p-4 ">Desserts</h1>
           <Dessert
             data={updatedData}
             itemsInCart={itemsInCart}
